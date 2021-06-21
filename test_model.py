@@ -39,22 +39,23 @@ def get_args():
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     # set your environment
-    parser.add_argument('--path',type=str,default='./dataout')
+    parser.add_argument('--path',type=str,default='./bestchekpointqatacovid')
     parser.add_argument('--gpu', type=str, default = '0')
     # arguments for training
     parser.add_argument('--img_size', type = int , default = 224)
 
     parser.add_argument('--load_model', type=str, default='./best_checkpoint[epoch_47].pt', help='.pth file path to load model')
+    parser.add_argument('--out', type=str, default='./dataout')
     return parser.parse_args()
 
 def main():
     
     args = get_args()
 
-    
-    print("path created")
-    os.mkdir(args.out)
-    os.mkdir(os.path.join(args.out,'Images'))
+    if ~ os.path.exists(args.out):
+        print("path created")
+        os.mkdir(args.out)
+        os.mkdir(os.path.join(args.out,'Images'))
 
     image_out = os.path.join(args.out,'Images')
 
