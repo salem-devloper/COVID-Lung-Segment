@@ -51,10 +51,10 @@ def main():
     
     args = get_args()
 
-    if ~ os.path.exists(args.out):
-        print("path created")
-        os.mkdir(args.out)
-        os.mkdir(os.path.join(args.out,'Images'))
+    
+    print("path created")
+    os.mkdir(args.out)
+    os.mkdir(os.path.join(args.out,'Images'))
 
     image_out = os.path.join(args.out,'Images')
 
