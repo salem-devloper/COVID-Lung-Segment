@@ -39,17 +39,24 @@ def get_args():
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     # set your environment
-    parser.add_argument('--path',type=str,default='./image/COVID-19 (1).jpeg')
+    parser.add_argument('--path',type=str,default='./data_out')
     parser.add_argument('--gpu', type=str, default = '0')
     # arguments for training
     parser.add_argument('--img_size', type = int , default = 224)
 
-    parser.add_argument('--load_model', type=str, default='./best_checkpoint/best_checkpoint[epoch_47].pt', help='.pth file path to load model')
+    parser.add_argument('--load_model', type=str, default='./best_checkpoint[epoch_47].pt', help='.pth file path to load model')
     return parser.parse_args()
 
 def main():
     
     args = get_args()
+
+    if ~ os.path.exists(args.out):
+        print("path created")
+        os.mkdir(args.out)
+        os.mkdir(os.path.join(args.out,'Images'))
+
+    image_out = os.path.join(args.out,'Images')
 
     img_path= args.path
 
@@ -102,7 +109,7 @@ def main():
     predicted_mask_images = mask_to_image(predicted_masks)
 
     first_image = predicted_mask_images[0][0]
-    Image.fromarray(first_image).save(os.path.join('./image','img_after_test.jpeg'))
+    Image.fromarray(first_image).save(os.path.join(image_out,'img_after_test.jpeg'))
 
 if __name__ == '__main__':
 
