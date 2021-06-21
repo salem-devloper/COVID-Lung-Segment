@@ -57,7 +57,7 @@ def main():
         os.mkdir(args.out)
         os.mkdir(os.path.join(args.out,'Images'))
 
-    image_out = os.path.join(args.out,'Images')
+    #image_out = os.path.join(args.out,'Images')
 
     img_path= args.path
 
@@ -110,7 +110,7 @@ def main():
     predicted_mask_images = mask_to_image(predicted_masks)
 
     first_image = predicted_mask_images[0][0]
-    Image.fromarray(first_image).save(os.path.join(image_out,'img_after_test.jpeg'))
+    Image.fromarray(first_image).save(os.path.join('','img_after_test.jpeg'))
 
 if __name__ == '__main__':
 
