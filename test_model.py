@@ -39,7 +39,7 @@ def get_args():
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     # set your environment
-    parser.add_argument('--path',type=str,default='./data_out')
+    parser.add_argument('--path',type=str,default='./dataout')
     parser.add_argument('--gpu', type=str, default = '0')
     # arguments for training
     parser.add_argument('--img_size', type = int , default = 224)
