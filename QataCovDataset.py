@@ -24,10 +24,10 @@ class QataCovDataset(Dataset): # inherit from torch.utils.data.Dataset
         self.split = split # train / val / test
         self.transforms = transforms
 
-        self.image_path = self.root_dir + '/Images/'
+        self.image_path = self.root_dir + '/image/'
 
         # target
-        self.mask_path = os.path.join(self.root_dir,'Ground-truths')
+        #self.mask_path = os.path.join(self.root_dir,'Ground-truths')
         
 
     def __len__(self):
@@ -48,22 +48,22 @@ class QataCovDataset(Dataset): # inherit from torch.utils.data.Dataset
         #    file_idx = int(fName.split('_')[1])
         #    if idx == file_idx:
         #        mask_fName = fName
-        mask_path = os.path.join(self.mask_path, 'mask_'+img_name)
+        #mask_path = os.path.join(self.mask_path, 'mask_'+img_name)
 
         img_size = np.array(img).shape
 
-        if os.path.exists(mask_path):
-            mask = Image.open(mask_path).convert('L')  # PIL Image
-        else:
-            mask = Image.fromarray(np.zeros(img_size,dtype=np.uint8))
+        #if os.path.exists(mask_path):
+        #    mask = Image.open(mask_path).convert('L')  # PIL Image
+        #else:
+        #    mask = Image.fromarray(np.zeros(img_size,dtype=np.uint8))
 
-        sample = {'image': img, 'mask': mask}
+        sample = {'image': img}
 
         if self.transforms:
             sample = self.transforms(sample)
 
-        if isinstance(img,torch.Tensor) and isinstance(mask, torch.Tensor):
-            assert img.size == mask.size
+        #if isinstance(img,torch.Tensor) and isinstance(mask, torch.Tensor):
+            #assert img.size == mask.size
         return sample
 
 if __name__ == "__main__":
