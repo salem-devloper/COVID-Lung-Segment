@@ -63,7 +63,7 @@ def main():
 
     mask = Image.fromarray(np.zeros((args.img_size,args.img_size),dtype=np.uint8))
 
-    real_mask_image = Image.open('./mask_covid_1.png').convert('L')
+    #real_mask_image = Image.open('./mask_covid_1.png').convert('L')
 
    
     # set GPU device
@@ -109,7 +109,7 @@ def main():
 
     first_image = predicted_mask_images[0][0]
 
-    images = [np.array(img),np.array(real_mask_image),first_image]
+    images = [np.array(img),first_image]
 
     imgs_comb = np.hstack(images)
 
